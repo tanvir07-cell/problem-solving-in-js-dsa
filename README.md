@@ -1,4 +1,4 @@
-# 1st problem:
+# 1st problem:------
 
 ### --- input : "Hello" ---
 
@@ -9,3 +9,11 @@
 1. if space then discard the space count
 
 2. if any uppercase then convert it to the lowercase
+
+# 1st problem end:------
+
+# 2nd problem:
+
+### --- input : [1,2,3],[3,4,5] ---
+
+##### --- output : true if arr1 elements in the arr2, otherwise false---

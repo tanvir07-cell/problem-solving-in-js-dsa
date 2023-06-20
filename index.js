@@ -1,5 +1,7 @@
 // 1st problem:
 
+// time complexity: O(n);
+// space complexity: O(n);(because we creating a obj with respect to array)
 function getCountStr(inputStr) {
   const obj = {};
   // convert str to lowerCase:
@@ -18,4 +20,22 @@ function getCountStr(inputStr) {
   return obj;
 }
 
-console.log(getCountStr("Rifat rt/,#"));
+// console.log(getCountStr("Rifat rt/,#"));
+
+// 2nd problem:
+
+function isElementExist(arr1, arr2) {
+  let obj = {};
+
+  for (let i = 0; i < arr1.length; i++) {
+    const element = arr1[i];
+    obj[element] = true;
+  }
+
+  for (let elm of arr2) {
+    if (obj[elm]) {
+      return true;
+    }
+  }
+}
+console.log(isElementExist(["a", "b", "c"], ["e", 2, "c", "1", "b"]));
