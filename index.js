@@ -111,4 +111,23 @@ function reverseStr(str) {
   return reverse;
 }
 
-console.log(reverseStr("Hello"));
+// console.log(reverseStr("Hello"));
+
+function reverseNumber(num) {
+  let strNum = num.toString();
+  let reverse = "";
+
+  for (let i = strNum.length - 1; i >= 0; i--) {
+    if (strNum[i] === "-") {
+      reverse = "-" + reverse;
+      break;
+    }
+
+    reverse += strNum[i];
+  }
+
+  // parseInt kore dile ager 0 gula remove hoye jabe:
+  // ar eikhane 10 means hocceh decimal number er jonno dielo hoy nah dileo hoy
+  return parseInt(reverse, 10);
+}
+console.log(reverseNumber(-1200000));
