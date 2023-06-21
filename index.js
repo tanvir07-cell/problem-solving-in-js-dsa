@@ -38,4 +38,77 @@ function isElementExist(arr1, arr2) {
     }
   }
 }
-console.log(isElementExist(["a", "b", "c"], ["e", 2, "c", "1", "b"]));
+// console.log(isElementExist(["a", "b", "c"], ["e", 2, "c", "1", "b"]));
+
+// problem 3 : fizzbuzz
+
+// time complexity: O(n)
+// space complexity: O(1)
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log(i, "fizzBuzz");
+    } else if (i % 3 === 0) {
+      console.log(i, "fizz");
+    } else if (i % 5 === 0) {
+      console.log(i, "buzz");
+    } else {
+      console.log(i);
+    }
+  }
+}
+// fizzBuzz(100);
+
+// problem 4:
+// sum of the array:
+
+function sumOfArray(arr) {
+  // flag variable that holds each iteration sum:
+  let sum = 0;
+
+  for (let num of arr) {
+    sum += num;
+  }
+  return sum;
+}
+// console.log(sumOfArray([1, 2, 3, 4, 5, 6]));
+
+// problem 5:
+// find max and min from the array then interval it:
+
+// space complexity:O(1)
+// time complexity: O(n)
+function findMaxMin(arr) {
+  let max = arr[0];
+  let min = arr[0];
+
+  for (let num of arr) {
+    if (num > max) max = num;
+    if (num < min) min = num;
+  }
+  return `Interval is : ${max - min}`;
+}
+
+// problem 6:
+// reverse the string:
+// time complexity: O(n);
+// space complexity : O(1);
+function reverseStr(str) {
+  let reverse = "";
+  // for (let i = str.length - 1; i >= 0; i--) {
+  //   reverse += str[i];
+  // }
+
+  // another way:
+  for (let char of str) {
+    reverse = char + reverse;
+  }
+
+  // another way:
+  // const newStr = str.split("").reverse().join("")
+  // console.log(newStr);
+
+  return reverse;
+}
+
+console.log(reverseStr("Hello"));
