@@ -148,4 +148,55 @@ function maxChar(str) {
   }
   return maxChar;
 }
-console.log(maxChar("Hellzzzzaaaaaoeeeeeeee"));
+// console.log(maxChar("Hellzzzzaaaaaoeeeeeeee"));
+
+// palindrome:
+
+// time complexity: O(n)
+// space complexity: O(n)(because we creating a new reverse string)
+
+function palindrome(input) {
+  let inputStr = input.toString();
+  // capital W means all non alphanumeric character:
+  const re = /[\W_]/g;
+  const removeAlphaNum = inputStr.replace(re, "");
+  let reverse = "";
+
+  for (let i = inputStr.length - 1; i >= 0; i--) {
+    let newStr = inputStr[i];
+    if (
+      (newStr.charCodeAt(0) >= 32 && newStr.charCodeAt(0) <= 47) ||
+      newStr.charCodeAt(0) == 95
+    )
+      continue;
+
+    reverse += newStr;
+  }
+  console.log("Rev:", reverse, "RemoveNonAlpha:", removeAlphaNum);
+  removeAlphaNum === reverse ? console.log(true) : console.log(false);
+}
+// palindrome("not a_palindrome");
+
+// vowel count:
+// time complexity: O(n)
+// space complexity: O(n)
+function vowelCount(str) {
+  let count = 0;
+
+  let vowelMap = {};
+  for (let i = 0; i < str.length; i++) {
+    vowelMap[str[i]] =
+      str[i] === "a" ||
+      str[i] === "e" ||
+      str[i] === "o" ||
+      str[i] === "i" ||
+      str[i] === "u"
+        ? true
+        : false;
+    if (vowelMap[str[i]] === true) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(vowelCount("helloiau123ec"));
