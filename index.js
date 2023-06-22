@@ -130,4 +130,22 @@ function reverseNumber(num) {
   // ar eikhane 10 means hocceh decimal number er jonno dielo hoy nah dileo hoy
   return parseInt(reverse, 10);
 }
-console.log(reverseNumber(-1200000));
+// console.log(reverseNumber(-1200000));
+
+// time complexity:O(n)
+// space complexity: O(n)
+function maxChar(str) {
+  let charMap = {};
+  let max = 0;
+  let maxChar = "";
+  for (let char of str) {
+    charMap[char] = charMap[char] + 1 || 1;
+    // charMap[char] = charMap[char] ? charMap[char] + 1 : 1;
+    if (charMap[char] > max) {
+      max = charMap[char];
+      maxChar = char;
+    }
+  }
+  return maxChar;
+}
+console.log(maxChar("Hellzzzzaaaaaoeeeeeeee"));
