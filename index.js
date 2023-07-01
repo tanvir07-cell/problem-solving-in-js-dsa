@@ -199,4 +199,18 @@ function vowelCount(str) {
   }
   return count;
 }
-console.log(vowelCount("helloiau123ec"));
+// console.log(vowelCount("helloiau123ec"));
+
+// array chunk:
+function arrayChunk(arr, num) {
+  let chunked = [];
+  if (arr.length <= num) {
+    chunked.push(arr);
+  } else {
+    for (let i = 0; i < arr.length; i = i + num) {
+      chunked.push(arr.slice(i, i + num));
+    }
+  }
+  console.log(chunked);
+}
+arrayChunk([1, 2, 3, 4, 5, 6], 2);
