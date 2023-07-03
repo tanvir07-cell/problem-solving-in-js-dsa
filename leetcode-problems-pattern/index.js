@@ -107,4 +107,142 @@ function palindrome(x) {
   return true;
 }
 
-console.log(palindrome(204));
+// console.log(palindrome(204));
+
+//49. Group Anagrams leetcode:
+
+function groupAnagrams(strs) {
+  let hashMap = {};
+  for (let str of strs) {
+    let sorted = str.split("").sort().join("");
+    if (sorted in hashMap) {
+      hashMap[sorted].push(str);
+    } else {
+      hashMap[sorted] = [str];
+    }
+  }
+  return Object.values(hashMap);
+}
+// console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+
+// Multiple pointers pattern problem:
+
+// 1. sum zero:
+
+function sumZero(arr) {
+  // first makes the array to sorted:
+  arr = arr.sort((a, b) => a - b);
+
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    let sum = arr[left] + arr[right];
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    }
+    if (sum > 0) {
+      right--;
+    }
+    if (sum < 0) {
+      left++;
+    }
+  }
+  return undefined;
+}
+
+// console.log(sumZero([-3, -2, -1, 0, 1, 2, 3, 4, 5]));
+
+// console.log(sumZero([-1, -3, -2, 0, -2, 200, 4, 5, 1, -5]));
+
+// console.log(sumZero([1, 2, 3]));
+
+function areDuplicate(arr) {
+  // edge case : first makes this array to the sorted:
+  arr.sort((a, b) => a - b);
+
+  let i = 0;
+  let j = 1;
+
+  while (i < arr.length && j < arr.length) {
+    if (arr[i] === arr[j]) return true;
+
+    i++;
+    j++;
+  }
+
+  return false;
+}
+
+// console.log(areDuplicate([-1, 2, -5, -2, 0, 3, 4, 3, 2, -1]));
+// console.log(areDuplicate([1, 2, 3, -5, 5]));
+
+//125. Valid Palindrome:
+function isPalindrome(s) {
+  const normalizeStr = s.replace(/[\W_]/g, "").toLowerCase();
+
+  // let left = 0;
+  // let right = normalizeStr.length - 1;
+
+  // while (left < right) {
+  //   if (normalizeStr[left] !== normalizeStr[right]) return false;
+  //   left++;
+  //   right--;
+  // }
+  // return true;
+
+  for (let i = 0; i < normalizeStr.length; i++) {
+    if (normalizeStr[i] !== normalizeStr[normalizeStr.length - 1 - i])
+      return false;
+  }
+  return true;
+}
+
+// console.log(isPalindrome("race a car"));
+
+// sliding window pattern problem:
+
+function maxSubArraySum(arr, num) {
+  let MAX = -Infinity;
+
+  for (let i = 0; i < arr.length - num + 1; i++) {
+    let sum = 0;
+    for (let j = 0; j < num; j++) {
+      sum = sum + arr[i + j];
+      console.log(arr[i], arr[i + j]);
+    }
+    MAX = Math.max(MAX, sum);
+  }
+  return MAX;
+}
+
+// console.log(maxSubArraySum([1, 2, 3, 4, 5, 6], 2));
+
+// explanation of maxSubArraySum problem:
+// kon 2 ta consecutive(por por)number jog korle maximum sum pawa jabe:
+// 1+2 = 3
+// 2+3 = 5;
+// 3+4 = 7
+// 4+5 = 9(return 9 because this is the maximum sum of 2 consecutive number)
+
+// best approach to solve this maxSubArraySum problem using sliding window pattern:
+
+function maxSubArraySum(arr, num) {
+  let sum = 0;
+  let MAX = 0;
+
+  for (let i = 0; i < num; i++) {
+    sum += arr[i];
+  }
+
+  // then assume that this sum is the maximum sum:
+  MAX = sum;
+
+  for (let i = num; i < arr.length; i++) {
+    sum = sum - arr[i - num] + arr[i];
+    MAX = Math.max(MAX, sum);
+  }
+  return MAX;
+}
+
+console.log(maxSubArraySum([1, 3, 5, 2, 8, 1, 10], 2));
